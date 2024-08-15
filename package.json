@@ -140,11 +140,11 @@
     "vite-plugin-theme": "^0.8.1",
     "vite-plugin-vue-setup-extend": "^0.1.0",
     "vite-plugin-windicss": "^1.4.12",
+    "vue-demi": "^0.14.10",
     "vue-eslint-parser": "^8.0.1",
     "vue-tsc": "^0.28.10"
   },
   "resolutions": {
-    "//": "Used to install imagemin dependencies, because imagemin may not be installed in China. If it is abroad, you can delete it",
     "bin-wrapper": "npm:bin-wrapper-china",
     "rollup": "^2.56.3"
   },
