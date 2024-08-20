@@ -26,12 +26,13 @@
     CSSProperties,
   } from 'vue';
   import SvgIcon from './SvgIcon.vue';
-  import Iconify from '@purge-icons/generated';
+  import Iconify from '@iconify/iconify';
   import { isString } from '/@/utils/is';
   import { propTypes } from '/@/utils/propTypes';
 
   const SVG_END_WITH_FLAG = '|svg';
   export default defineComponent({
+    // eslint-disable-next-line vue/multi-word-component-names
     name: 'Icon',
     components: { SvgIcon },
     props: {

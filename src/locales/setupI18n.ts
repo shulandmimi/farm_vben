@@ -13,7 +13,11 @@ export let i18n: ReturnType<typeof createI18n>;
 async function createI18nOptions(): Promise<I18nOptions> {
   const localeStore = useLocaleStoreWithOut();
   const locale = localeStore.getLocale;
-  const defaultLocal = await import(`./lang/${locale}.ts`);
+  // import.meta.glob(`./lang/${locale}.ts`)
+  const key = `./lang/${locale}.ts`;
+  const modules = import.meta.glob('./lang/*.ts', { eager: true });
+  const defaultLocal = modules[key];
+  console.log(defaultLocal);
   const message = defaultLocal.default?.message ?? {};
 
   setHtmlPageLang(locale);
