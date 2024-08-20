@@ -1,11 +1,12 @@
 import { defineConfig } from '@farmfe/core';
 import pkg from './package.json';
 import moment from 'moment';
-import { loadEnv } from 'vite';
+// import { loadEnv } from 'vite';
 import { resolve } from 'path';
 import { generateModifyVars } from './build/generate/generateModifyVars';
-import { wrapperEnv } from './build/utils';
-import { createVitePlugins } from './build/vite/plugin';
+// import { wrapperEnv } from './build/utils';
+// import { createVitePlugins } from './build/vite/plugin';
+import less from '@farmfe/js-plugin-less';
 
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
@@ -17,15 +18,15 @@ const __APP_INFO__ = {
   lastBuildTime: moment().format('YYYY-MM-DD HH:mm:ss'),
 };
 
-export default defineConfig(({ mode }) => {
-  const root = process.cwd();
+export default defineConfig(({}) => {
+  // const root = process.cwd();
 
-  const env = loadEnv(mode, root);
+  // const env = loadEnv(mode, root);
 
-  // The boolean type read by loadEnv is a string. This function can be converted to boolean type
-  const viteEnv = wrapperEnv(env);
+  // // The boolean type read by loadEnv is a string. This function can be converted to boolean type
+  // const viteEnv = wrapperEnv(env);
 
-  const isBuild = mode === 'production';
+  // const isBuild = mode === 'production';
 
   return {
     root: '.',
@@ -50,9 +51,9 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-
+    plugins: [less()],
     // The vite plugin used by the project. The quantity is large, so it is separately extracted and managed
-    vitePlugins: createVitePlugins(viteEnv, isBuild),
+    // vitePlugins: createVitePlugins(viteEnv, isBuild),
 
     optimizeDeps: {
       // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly
